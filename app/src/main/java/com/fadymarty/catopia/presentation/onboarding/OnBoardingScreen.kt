@@ -1,11 +1,13 @@
 package com.fadymarty.catopia.presentation.onboarding
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -36,7 +38,8 @@ fun OnBoardingScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .navigationBarsPadding(),
+            .navigationBarsPadding()
+            .padding(start = 32.dp, end = 32.dp, bottom = 64.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -57,17 +60,17 @@ fun OnBoardingScreen(
 
         HorizontalPager(state = pagerState) { index ->
             OnBoardingPage(page = pages[index])
-            Spacer(modifier = Modifier.height(8.dp))
         }
 
-        Row {
-            repeat(pages.size) { iteration ->
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            repeat(pages.size) { page ->
                 Box(
                     modifier = Modifier
-                        .padding(2.dp)
                         .clip(CircleShape)
-                        .background(if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.Gray)
-                        .size(8.dp)
+                        .background(if (pagerState.currentPage == page) MaterialTheme.colorScheme.primary else Color.Gray)
+                        .size(12.dp)
                 )
             }
         }
@@ -77,6 +80,7 @@ fun OnBoardingScreen(
         val scope = rememberCoroutineScope()
 
         Button(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
             onClick = {
                 scope.launch {
                     if (pagerState.currentPage == 2) {
@@ -91,7 +95,5 @@ fun OnBoardingScreen(
         ) {
             Text(text = buttonState.value)
         }
-
-        Spacer(modifier = Modifier.padding(bottom = 32.dp))
     }
 }
