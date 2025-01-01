@@ -38,8 +38,7 @@ fun OnBoardingScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .navigationBarsPadding()
-            .padding(start = 32.dp, end = 32.dp, bottom = 64.dp),
+            .navigationBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -80,7 +79,7 @@ fun OnBoardingScreen(
         val scope = rememberCoroutineScope()
 
         Button(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 64.dp),
             onClick = {
                 scope.launch {
                     if (pagerState.currentPage == 2) {
@@ -95,5 +94,7 @@ fun OnBoardingScreen(
         ) {
             Text(text = buttonState.value)
         }
+
+        Spacer(modifier = Modifier.height(64.dp))
     }
 }

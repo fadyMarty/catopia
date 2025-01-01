@@ -18,7 +18,7 @@ val pages = listOf(
     ),
     Page(
         title = "Explore Adorable Cats",
-        description = "Swipe through a gallery of charming cats, from playful kittens to majestic felines.\n",
+        description = "Swipe through a gallery of charming cats, from playful kittens to majestic felines.",
         image = R.drawable.onboarding_2
     ),
     Page(

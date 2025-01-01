@@ -24,6 +24,7 @@ import com.fadymarty.catopia.presentation.onboarding.pages
 fun OnBoardingPage(page: Page) {
 
     Column(
+        modifier = Modifier.padding(horizontal = 48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
