@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,7 +39,8 @@ fun OnBoardingPage(page: Page) {
             text = page.title,
             textAlign = TextAlign.Center,
             fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -46,13 +48,8 @@ fun OnBoardingPage(page: Page) {
         Text(
             text = page.description,
             textAlign = TextAlign.Center,
-            fontSize = 16.sp
+            fontSize = 16.sp,
+            color = MaterialTheme.colorScheme.onBackground
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OnBoardingPagePreview() {
-    OnBoardingPage(page = pages[0])
 }

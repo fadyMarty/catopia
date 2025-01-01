@@ -91,5 +91,7 @@ fun OnBoardingScreen(
         ) {
             Text(text = buttonState.value)
         }
+
+        Spacer(modifier = Modifier.padding(bottom = 32.dp))
     }
 }
