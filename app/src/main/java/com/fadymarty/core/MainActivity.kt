@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.fadymarty.catopia.presentation.nav_graph.NavGraph
-import com.fadymarty.catopia.presentation.ui.theme.CatPicturesTheme
+import com.fadymarty.catopia.presentation.ui.theme.CatopiaTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContent {
-            CatPicturesTheme {
+            CatopiaTheme {
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
                     val startDestination = viewModel.startDestination
                     NavGraph(startDestination = startDestination)
