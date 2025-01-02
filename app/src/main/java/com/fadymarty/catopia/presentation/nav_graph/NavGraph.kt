@@ -5,7 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.fadymarty.catopia.presentation.cat_pictures_navigator.CatPicturesNavigatorScreen
+import com.fadymarty.catopia.presentation.catopia_navigator.CatPicturesNavigatorScreen
 import com.fadymarty.catopia.presentation.onboarding.OnBoardingScreen
 
 @Composable

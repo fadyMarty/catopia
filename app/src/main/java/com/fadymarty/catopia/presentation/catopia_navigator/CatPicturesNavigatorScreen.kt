@@ -1,15 +1,16 @@
-package com.fadymarty.catopia.presentation.cat_pictures_navigator
+package com.fadymarty.catopia.presentation.catopia_navigator
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,9 +18,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.fadymarty.catopia.R
 import com.fadymarty.catopia.presentation.cat_list.CatListScreen
-import com.fadymarty.catopia.presentation.cat_pictures_navigator.components.BottomNavigationItem
-import com.fadymarty.catopia.presentation.cat_pictures_navigator.components.CatPicturesBottomNavigation
+import com.fadymarty.catopia.presentation.cat_list.CatListViewModel
+import com.fadymarty.catopia.presentation.catopia_navigator.components.BottomNavigationItem
+import com.fadymarty.catopia.presentation.catopia_navigator.components.CatPicturesBottomNavigation
 import com.fadymarty.catopia.presentation.favorite.FavoriteScreen
+import com.fadymarty.catopia.presentation.favorite.FavoriteViewModel
 import com.fadymarty.catopia.presentation.nav_graph.Route
 
 @Composable
@@ -35,7 +38,7 @@ fun CatPicturesNavigatorScreen() {
     val navController = rememberNavController()
     val backstackState = navController.currentBackStackEntryAsState().value
     var selectedItem by rememberSaveable {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
 
     selectedItem = remember(backstackState) {
@@ -75,18 +78,31 @@ fun CatPicturesNavigatorScreen() {
                 .padding(bottom = padding.calculateBottomPadding())
         ) {
             composable(route = Route.CatListScreen.route) {
-                CatListScreen(contentPadding = padding.calculateTopPadding())
+                val viewModel: CatListViewModel = hiltViewModel()
+
+                CatListScreen(
+                    catListState = viewModel.catListState.value,
+                    errorImageState = viewModel.errorImageState.value,
+                    selectDeleteCatPicture = viewModel::selectDeleteCatPhoto,
+                    getCatPictures = viewModel::getCatPictures,
+                    contentPadding = padding.calculateTopPadding()
+                )
             }
 
             composable(route = Route.FavoriteScreen.route) {
+                val viewModel: FavoriteViewModel = hiltViewModel()
+
                 FavoriteScreen(
+                    favoriteState = viewModel.favoriteState.value,
+                    errorImageState = viewModel.errorImageState.value,
                     onErrorButtonClick = {
                         navigateToTap(
                             navController = navController,
                             route = Route.CatListScreen.route
                         )
                     },
-                    contentPadding = padding.calculateTopPadding()
+                    selectDeleteCatPicture = viewModel::selectDeleteCatPhoto,
+                    contentPadding = padding.calculateTopPadding(),
                 )
             }
         }

@@ -1,4 +1,4 @@
-package com.fadymarty.catopia.presentation.cat_pictures_navigator.components
+package com.fadymarty.catopia.presentation.catopia_navigator.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -17,7 +17,7 @@ import com.fadymarty.catopia.domain.use_case.cat_pictures.SelectCatPictureUseCas
 import com.fadymarty.catopia.domain.use_case.cat_pictures.SelectCatPicturesUseCase
 import com.fadymarty.catopia.domain.use_case.cat_pictures.UpsertCatPictureUseCase
 import com.fadymarty.core.util.Constants.BASE_URL
-import com.loc.newsapp.domain.usecases.app_entry.SaveAppEntry
+import com.fadymarty.catopia.domain.use_case.app_entry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

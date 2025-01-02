@@ -9,20 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.fadymarty.catopia.domain.model.Cat
+import com.fadymarty.catopia.presentation.components.ErrorImageState
 import com.fadymarty.catopia.presentation.components.CatItem
 import com.fadymarty.catopia.presentation.components.ErrorScreen
 
 @Composable
 fun FavoriteScreen(
-    viewModel: FavoriteViewModel = hiltViewModel(),
+    favoriteState: FavoriteState,
+    errorImageState: ErrorImageState,
     onErrorButtonClick: () -> Unit,
+    selectDeleteCatPicture: (Cat) -> Unit,
     contentPadding: Dp = 0.dp,
 ) {
-
-    val favoriteState = viewModel.favoriteState.value
-    val errorImageState = viewModel.errorImageState.value
-
     LazyVerticalStaggeredGrid(
         contentPadding = PaddingValues(top = contentPadding),
         modifier = Modifier.fillMaxSize(),
@@ -32,7 +31,7 @@ fun FavoriteScreen(
             CatItem(
                 cat = catPicture,
                 onBookmarkClick = {
-                    viewModel.selectDeleteCatPhoto(catPicture)
+                    selectDeleteCatPicture(catPicture)
                 }
             )
         }
@@ -42,7 +41,7 @@ fun FavoriteScreen(
         ErrorScreen(
             title = "No Favorites Yet",
             description = "Your favorite cats will appear here. Start exploring and tap the heart icon to save the ones you love!",
-            errorImage = errorImageState,
+            errorImage = errorImageState.errorImage,
             onClick = onErrorButtonClick,
             buttonText = "Discover Cats"
         )

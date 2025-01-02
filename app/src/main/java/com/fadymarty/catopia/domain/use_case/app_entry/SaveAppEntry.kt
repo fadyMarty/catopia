@@ -1,4 +1,4 @@
-package com.loc.newsapp.domain.usecases.app_entry
+package com.fadymarty.catopia.domain.use_case.app_entry
 
 import com.fadymarty.catopia.domain.manager.LocalUserManger
 

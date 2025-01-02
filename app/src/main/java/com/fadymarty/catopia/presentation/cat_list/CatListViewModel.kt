@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.fadymarty.catopia.R
 import com.fadymarty.catopia.domain.model.Cat
 import com.fadymarty.catopia.domain.use_case.cat_pictures.CatPicturesUseCases
+import com.fadymarty.catopia.presentation.components.ErrorImageState
 import com.fadymarty.core.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -22,8 +23,8 @@ class CatListViewModel @Inject constructor(
     private val _catListState = mutableStateOf(CatListState())
     val catListState: State<CatListState> = _catListState
 
-    private val _errorImageState = mutableStateOf(R.drawable.error_1)
-    val errorImageState: State<Int> = _errorImageState
+    private val _errorImageState = mutableStateOf(ErrorImageState())
+    val errorImageState: State<ErrorImageState> = _errorImageState
 
     val errorImages = listOf(
         R.drawable.error_1,
@@ -35,7 +36,7 @@ class CatListViewModel @Inject constructor(
 
     init {
         getCatPictures()
-        _errorImageState.value = errorImages.random()
+        _errorImageState.value = ErrorImageState(errorImages.random())
     }
 
     fun getCatPictures() {
