@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fadymarty.catopia.domain.use_case.app_entry.AppEntryUseCases
-import com.fadymarty.catopia.presentation.nav_graph.Route
+import com.fadymarty.catopia.presentation.nav_graph.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
@@ -21,15 +21,15 @@ class MainViewModel @Inject constructor(
     var splashCondition by mutableStateOf(true)
         private set
 
-    var startDestination by mutableStateOf(Route.AppStartNavigation.route)
+    var startDestination by mutableStateOf<Screen>(Screen.AppStartNavigation)
         private set
 
     init {
         appEntryUseCases.readAppEntry().onEach { shouldStartFromHomeScreen ->
             if (shouldStartFromHomeScreen) {
-                startDestination = Route.CatPicturesNavigation.route
+                startDestination = Screen.CatPicturesNavigation
             } else {
-                startDestination = Route.AppStartNavigation.route
+                startDestination = Screen.AppStartNavigation
             }
             delay(300)
             splashCondition = false

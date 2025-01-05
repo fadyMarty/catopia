@@ -5,6 +5,7 @@ plugins {
 
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -14,9 +15,9 @@ android {
     defaultConfig {
         applicationId = "com.fadymarty.catopia"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
-        versionName = "1.0.1"
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -85,4 +86,10 @@ dependencies {
 
     //Datastore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.5")
 }

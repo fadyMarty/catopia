@@ -10,7 +10,7 @@ import com.fadymarty.catopia.presentation.onboarding.OnBoardingScreen
 
 @Composable
 fun NavGraph(
-    startDestination: String,
+    startDestination: Screen
 ) {
     val navController = rememberNavController()
 
@@ -18,22 +18,18 @@ fun NavGraph(
         navController = navController,
         startDestination = startDestination
     ) {
-        navigation(
-            route = Route.AppStartNavigation.route,
-            startDestination = Route.OnBoardingScreen.route
+        navigation<Screen.AppStartNavigation>(
+            startDestination = Screen.OnBoardingScreen
         ) {
-            composable(
-                route = Route.OnBoardingScreen.route
-            ) {
+            composable<Screen.OnBoardingScreen> {
                 OnBoardingScreen()
             }
         }
 
-        navigation(
-            route = Route.CatPicturesNavigation.route,
-            startDestination = Route.CatPicturesNavigatorScreen.route
+        navigation<Screen.CatPicturesNavigation>(
+            startDestination = Screen.CatPicturesNavigatorScreen
         ) {
-            composable(route = Route.CatPicturesNavigatorScreen.route) {
+            composable<Screen.CatPicturesNavigatorScreen> {
                 CatPicturesNavigatorScreen()
             }
         }

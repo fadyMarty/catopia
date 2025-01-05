@@ -23,7 +23,7 @@ import com.fadymarty.catopia.presentation.catopia_navigator.components.BottomNav
 import com.fadymarty.catopia.presentation.catopia_navigator.components.CatPicturesBottomNavigation
 import com.fadymarty.catopia.presentation.favorite.FavoriteScreen
 import com.fadymarty.catopia.presentation.favorite.FavoriteViewModel
-import com.fadymarty.catopia.presentation.nav_graph.Route
+import com.fadymarty.catopia.presentation.nav_graph.Screen
 
 @Composable
 fun CatPicturesNavigatorScreen() {
@@ -42,9 +42,9 @@ fun CatPicturesNavigatorScreen() {
     }
 
     selectedItem = remember(backstackState) {
-        when (backstackState?.destination?.route) {
-            Route.CatListScreen.route -> 0
-            Route.FavoriteScreen.route -> 1
+        when (backstackState?.destination) {
+            Screen.CatListScreen -> 0
+            Screen.FavoriteScreen -> 1
             else -> 0
         }
     }
@@ -59,25 +59,27 @@ fun CatPicturesNavigatorScreen() {
                     when (index) {
                         0 -> navigateToTap(
                             navController = navController,
-                            route = Route.CatListScreen.route
+                            route = Screen.CatListScreen
                         )
 
                         1 -> navigateToTap(
                             navController = navController,
-                            route = Route.FavoriteScreen.route
+                            route = Screen.FavoriteScreen
                         )
                     }
                 }
             )
         }
-    ) { padding ->
+    ) { innerPadding ->
         NavHost(
-            navController = navController,
-            startDestination = Route.CatListScreen.route,
             modifier = Modifier
-                .padding(bottom = padding.calculateBottomPadding())
+                .padding(
+                    bottom = innerPadding.calculateBottomPadding()
+                ),
+            navController = navController,
+            startDestination = Screen.CatListScreen
         ) {
-            composable(route = Route.CatListScreen.route) {
+            composable<Screen.CatListScreen> {
                 val viewModel: CatListViewModel = hiltViewModel()
 
                 CatListScreen(
@@ -85,11 +87,11 @@ fun CatPicturesNavigatorScreen() {
                     errorImageState = viewModel.errorImageState.value,
                     selectDeleteCatPicture = viewModel::selectDeleteCatPhoto,
                     getCatPictures = viewModel::getCatPictures,
-                    contentPadding = padding.calculateTopPadding()
+                    contentPadding = innerPadding.calculateTopPadding()
                 )
             }
 
-            composable(route = Route.FavoriteScreen.route) {
+            composable<Screen.FavoriteScreen> {
                 val viewModel: FavoriteViewModel = hiltViewModel()
 
                 FavoriteScreen(
@@ -98,18 +100,18 @@ fun CatPicturesNavigatorScreen() {
                     onErrorButtonClick = {
                         navigateToTap(
                             navController = navController,
-                            route = Route.CatListScreen.route
+                            route = Screen.CatListScreen
                         )
                     },
                     selectDeleteCatPicture = viewModel::selectDeleteCatPhoto,
-                    contentPadding = padding.calculateTopPadding(),
+                    contentPadding = innerPadding.calculateTopPadding(),
                 )
             }
         }
     }
 }
 
-private fun navigateToTap(navController: NavController, route: String) {
+private fun navigateToTap(navController: NavController, route: Screen) {
     navController.navigate(route) {
         navController.graph.startDestinationRoute?.let { homeScreen ->
             popUpTo(homeScreen) {
