@@ -1,4 +1,4 @@
-package com.fadymarty.catopia.presentation.ui.theme
+package com.fadymarty.core.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.fadymarty.core
+package com.fadymarty.core.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.fadymarty.catopia.presentation.nav_graph.NavGraph
-import com.fadymarty.catopia.presentation.ui.theme.CatopiaTheme
+import com.fadymarty.core.presentation.ui.theme.CatopiaTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 

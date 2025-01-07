@@ -1,4 +1,4 @@
-package com.fadymarty.catopia.presentation.ui.theme
+package com.fadymarty.core.presentation.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
