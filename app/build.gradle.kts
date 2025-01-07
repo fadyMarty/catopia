@@ -17,7 +17,7 @@ android {
         minSdk = 24
         targetSdk = 35
         versionCode = 1
-        versionName = "1.0.3"
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -82,10 +82,10 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.4")
 
     // Splash
-    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     //Datastore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     // Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")

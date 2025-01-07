@@ -21,19 +21,18 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
-        enableEdgeToEdge()
-
         installSplashScreen().apply {
             setKeepOnScreenCondition {
                 viewModel.splashCondition
             }
         }
+        enableEdgeToEdge()
+
         setContent {
             CatopiaTheme {
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
                     val startDestination = viewModel.startDestination
-                    NavGraph(startDestination = startDestination)
+                    NavGraph(startDestination)
                 }
             }
         }
