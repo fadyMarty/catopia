@@ -1,17 +1,15 @@
 package com.fadymarty.catopia.presentation.catopia_navigator.components
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 
 @Composable
-fun CatPicturesBottomNavigation(
+fun BottomNavigationBar(
     items: List<BottomNavigationItem>,
     selected: Int,
     onItemClick: (Int) -> Unit,
@@ -29,7 +27,7 @@ fun CatPicturesBottomNavigation(
                 },
                 label = {
                     Text(
-                        text = item.text
+                        text = item.label
                     )
                 }
             )
@@ -39,5 +37,5 @@ fun CatPicturesBottomNavigation(
 
 data class BottomNavigationItem(
     @DrawableRes val icon: Int,
-    val text: String,
+    val label: String,
 )

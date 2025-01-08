@@ -10,6 +10,7 @@ import com.fadymarty.catopia.domain.manager.LocalUserManger
 import com.fadymarty.catopia.domain.repository.CatRepository
 import com.fadymarty.catopia.domain.use_case.app_entry.AppEntryUseCases
 import com.fadymarty.catopia.domain.use_case.app_entry.ReadAppEntry
+import com.fadymarty.catopia.domain.use_case.app_entry.SaveAppEntry
 import com.fadymarty.catopia.domain.use_case.cat_pictures.CatPicturesUseCases
 import com.fadymarty.catopia.domain.use_case.cat_pictures.DeleteCatPictureUseCase
 import com.fadymarty.catopia.domain.use_case.cat_pictures.GetCatPicturesUseCase
@@ -17,7 +18,6 @@ import com.fadymarty.catopia.domain.use_case.cat_pictures.SelectCatPictureUseCas
 import com.fadymarty.catopia.domain.use_case.cat_pictures.SelectCatPicturesUseCase
 import com.fadymarty.catopia.domain.use_case.cat_pictures.UpsertCatPictureUseCase
 import com.fadymarty.core.util.Constants.BASE_URL
-import com.fadymarty.catopia.domain.use_case.app_entry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

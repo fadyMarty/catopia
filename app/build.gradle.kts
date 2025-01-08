@@ -89,7 +89,4 @@ dependencies {
 
     // Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-
-    // Compose Navigation
-    implementation("androidx.navigation:navigation-compose:2.8.5")
 }

@@ -9,6 +9,5 @@ import com.fadymarty.catopia.data.local.entity.CatEntity
     version = 1
 )
 abstract class CatDatabase : RoomDatabase() {
-
     abstract val catDao: CatDao
 }

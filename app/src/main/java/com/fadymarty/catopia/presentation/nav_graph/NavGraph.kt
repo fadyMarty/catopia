@@ -5,12 +5,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.fadymarty.catopia.presentation.catopia_navigator.CatPicturesNavigatorScreen
+import com.fadymarty.catopia.presentation.catopia_navigator.CatopiaNavigatorScreen
 import com.fadymarty.catopia.presentation.onboarding.OnBoardingScreen
 
 @Composable
 fun NavGraph(
-    startDestination: Screen
+    startDestination: String,
 ) {
     val navController = rememberNavController()
 
@@ -18,19 +18,23 @@ fun NavGraph(
         navController = navController,
         startDestination = startDestination
     ) {
-        navigation<Screen.AppStartNavigation>(
-            startDestination = Screen.OnBoardingScreen
+        navigation(
+            route = Screen.AppStartNavigation.route,
+            startDestination = Screen.OnBoardingScreen.route
         ) {
-            composable<Screen.OnBoardingScreen> {
+            composable(
+                route = Screen.OnBoardingScreen.route
+            ) {
                 OnBoardingScreen()
             }
         }
 
-        navigation<Screen.CatPicturesNavigation>(
-            startDestination = Screen.CatPicturesNavigatorScreen
+        navigation(
+            route = Screen.CatPicturesNavigation.route,
+            startDestination = Screen.CatPicturesNavigatorScreen.route
         ) {
-            composable<Screen.CatPicturesNavigatorScreen> {
-                CatPicturesNavigatorScreen()
+            composable(route = Screen.CatPicturesNavigatorScreen.route) {
+                CatopiaNavigatorScreen()
             }
         }
     }

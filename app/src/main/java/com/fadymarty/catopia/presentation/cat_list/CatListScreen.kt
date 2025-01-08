@@ -11,7 +11,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.fadymarty.catopia.domain.model.Cat
 import com.fadymarty.catopia.presentation.components.CatItem
@@ -25,12 +24,12 @@ fun CatListScreen(
     errorImageState: ErrorImageState,
     selectDeleteCatPicture: (Cat) -> Unit,
     getCatPictures: () -> Unit,
-    contentPadding: Dp = 0.dp,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         LazyVerticalStaggeredGrid(
-            contentPadding = PaddingValues(top = contentPadding),
+            contentPadding = contentPadding,
             modifier = Modifier.fillMaxSize(),
             columns = StaggeredGridCells.Fixed(2)
         ) {

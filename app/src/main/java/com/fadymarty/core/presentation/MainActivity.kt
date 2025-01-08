@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CatopiaTheme {
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    val startDestination = viewModel.startDestination
+                    val startDestination = viewModel.startDestination.route
                     NavGraph(startDestination)
                 }
             }
