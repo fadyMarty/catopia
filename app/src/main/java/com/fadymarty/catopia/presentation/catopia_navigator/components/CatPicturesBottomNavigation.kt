@@ -16,9 +16,7 @@ fun CatPicturesBottomNavigation(
     selected: Int,
     onItemClick: (Int) -> Unit,
 ) {
-    NavigationBar(
-        modifier = Modifier.fillMaxWidth()
-    ) {
+    NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = index == selected,
