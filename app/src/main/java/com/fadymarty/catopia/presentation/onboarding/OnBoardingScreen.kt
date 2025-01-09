@@ -50,7 +50,7 @@ fun OnBoardingScreen(
                     0 -> "Get Started"
                     1 -> "Next"
                     2 -> "Start Exploring"
-                    else -> ""
+                    else -> "Next"
                 }
             }
         }
@@ -79,7 +79,9 @@ fun OnBoardingScreen(
         val scope = rememberCoroutineScope()
 
         Button(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 64.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 64.dp),
             onClick = {
                 scope.launch {
                     if (pagerState.currentPage == 2) {

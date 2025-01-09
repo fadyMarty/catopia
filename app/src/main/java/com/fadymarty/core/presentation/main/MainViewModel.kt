@@ -1,4 +1,4 @@
-package com.fadymarty.core.presentation
+package com.fadymarty.core.presentation.main
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

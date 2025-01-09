@@ -1,6 +1,7 @@
 package com.fadymarty.catopia.presentation.catopia_navigator
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -71,6 +72,7 @@ fun CatopiaNavigatorScreen() {
         }
     ) { innerPadding ->
         NavHost(
+            modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()),
             navController = navController,
             startDestination = Screen.CatListScreen.route
         ) {
@@ -81,7 +83,7 @@ fun CatopiaNavigatorScreen() {
                     errorImageState = viewModel.errorImageState.value,
                     selectDeleteCatPicture = viewModel::selectDeleteCatPhoto,
                     getCatPictures = viewModel::getCatPictures,
-                    contentPadding = innerPadding
+                    contentPadding = innerPadding.calculateTopPadding()
                 )
             }
 
@@ -97,7 +99,7 @@ fun CatopiaNavigatorScreen() {
                         )
                     },
                     selectDeleteCatPicture = viewModel::selectDeleteCatPhoto,
-                    contentPadding = innerPadding
+                    contentPadding = innerPadding.calculateTopPadding()
                 )
             }
         }

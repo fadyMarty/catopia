@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.fadymarty.catopia.domain.model.Cat
 import com.fadymarty.catopia.presentation.components.CatItem
@@ -19,10 +20,10 @@ fun FavoriteScreen(
     errorImageState: ErrorImageState,
     onErrorButtonClick: () -> Unit,
     selectDeleteCatPicture: (Cat) -> Unit,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: Dp = 0.dp,
 ) {
     LazyVerticalStaggeredGrid(
-        contentPadding = contentPadding,
+        contentPadding = PaddingValues(top = contentPadding),
         modifier = Modifier.fillMaxSize(),
         columns = StaggeredGridCells.Fixed(2)
     ) {

@@ -22,9 +22,7 @@ fun NavGraph(
             route = Screen.AppStartNavigation.route,
             startDestination = Screen.OnBoardingScreen.route
         ) {
-            composable(
-                route = Screen.OnBoardingScreen.route
-            ) {
+            composable(route = Screen.OnBoardingScreen.route) {
                 OnBoardingScreen()
             }
         }

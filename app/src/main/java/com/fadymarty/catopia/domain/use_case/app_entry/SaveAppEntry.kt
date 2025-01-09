@@ -9,5 +9,4 @@ class SaveAppEntry(
     suspend operator fun invoke() {
         localUserManger.saveAppEntry()
     }
-
 }
