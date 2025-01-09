@@ -30,8 +30,16 @@ fun CatopiaNavigatorScreen() {
 
     val bottomNavigationItems = remember {
         listOf(
-            BottomNavigationItem(icon = R.drawable.ic_cat_list, label = "Pictures"),
-            BottomNavigationItem(icon = R.drawable.ic_favorite, label = "Favorites")
+            BottomNavigationItem(
+                selectedIcon = R.drawable.ic_cat_list,
+                unselectedIcon = R.drawable.ic_cat_list,
+                label = "Pictures"
+            ),
+            BottomNavigationItem(
+                selectedIcon = R.drawable.ic_favorite,
+                unselectedIcon = R.drawable.ic_favorite_outlined,
+                label = "Favorites"
+            )
         )
     }
 

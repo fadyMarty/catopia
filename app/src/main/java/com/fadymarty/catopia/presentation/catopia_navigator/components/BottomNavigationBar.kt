@@ -21,7 +21,10 @@ fun BottomNavigationBar(
                 onClick = { onItemClick(index) },
                 icon = {
                     Icon(
-                        painter = painterResource(item.icon),
+                        painter = painterResource(
+                            if (index == selected) item.selectedIcon
+                            else item.unselectedIcon
+                        ),
                         contentDescription = null
                     )
                 },
@@ -36,6 +39,7 @@ fun BottomNavigationBar(
 }
 
 data class BottomNavigationItem(
-    @DrawableRes val icon: Int,
+    @DrawableRes val selectedIcon: Int,
+    @DrawableRes val unselectedIcon: Int,
     val label: String,
 )
